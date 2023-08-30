@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Shoot")]
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject rocketPrefab;
     [SerializeField] private float shootForce;
     [SerializeField] private Transform shootPoint;
 
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
         GroundCheck();
         JumpCheck();
         Shoot();
+        ShootRocket();
     }
 
     void GetInput()
@@ -95,7 +97,6 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
-        Debug.Log(isGrounded);
     }
 
     private void JumpCheck()
@@ -113,6 +114,16 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             bullet.GetComponent<Rigidbody>().AddForce(shootPoint.forward * shootForce);
             Destroy(bullet, 3f);
+        }
+    }
+
+    private void ShootRocket()
+    {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            GameObject rocket = Instantiate(rocketPrefab, shootPoint.position, Quaternion.identity);
+            rocket.GetComponent<Rigidbody>().AddForce(shootPoint.forward * shootForce);
+            Destroy(rocket, 3f);
         }
     }
 }

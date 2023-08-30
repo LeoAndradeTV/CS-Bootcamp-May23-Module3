@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1821269867817429763}
   - component: {fileID: 4709220722084311207}
   - component: {fileID: 5849396906276273446}
-  m_Layer: 6
-  m_Name: Bullet
+  m_Layer: 7
+  m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ed839be158831342ab20197fe414255, type: 2}
+  - {fileID: 2100000, guid: 5822b7b95424493418007950b6c6091b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
