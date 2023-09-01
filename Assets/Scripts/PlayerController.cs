@@ -25,6 +25,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float shootForce;
     [SerializeField] private Transform shootPoint;
 
+    [Header("Interactions")]
+    [SerializeField] private LayerMask selectableLayer;
+    [SerializeField] private LayerMask pickableLayer;
+    [SerializeField] private Transform attachPoint;
+    
+    private ISelectable currentSelectable;
+    private IPickable currentPickable;
+
     private float horizontalInput;
     private float verticalInput;
     private float mouseX;
@@ -37,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     private Vector3 playerVelocity;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +65,8 @@ public class PlayerController : MonoBehaviour
         JumpCheck();
         Shoot();
         ShootRocket();
+        Interact();
+        PickAndDrop();
     }
 
     void GetInput()
@@ -124,6 +135,56 @@ public class PlayerController : MonoBehaviour
             GameObject rocket = Instantiate(rocketPrefab, shootPoint.position, Quaternion.identity);
             rocket.GetComponent<Rigidbody>().AddForce(shootPoint.forward * shootForce);
             Destroy(rocket, 3f);
+        }
+    }
+
+    private void Interact()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        bool isHitting = Physics.Raycast(ray, out RaycastHit hitInfo, 2f, selectableLayer);
+        if (isHitting)
+        {
+            ISelectable selectable = hitInfo.collider.GetComponent<ISelectable>();
+
+            if (selectable != null)
+            {
+                currentSelectable = selectable;
+                selectable.OnHoverEnter();
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    selectable.OnSelect();
+                }
+            }
+        }
+
+        if (!isHitting && currentSelectable != null)
+        {
+            currentSelectable.OnHoverExit();
+            currentSelectable = null;
+        }
+    }
+
+    private void PickAndDrop()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        bool isHitting = Physics.Raycast(ray, out RaycastHit hitInfo, 2f, pickableLayer);
+        if (isHitting)
+        {
+            IPickable pickable = hitInfo.collider.GetComponent<IPickable>();
+
+            if (pickable != null && Input.GetKeyDown(KeyCode.E))
+            {
+                currentPickable = pickable;
+                pickable.OnPicked(attachPoint);
+                return;
+            }
+        }
+
+        if (currentPickable != null && Input.GetKeyDown(KeyCode.E))
+        {
+            currentPickable.OnDropped();
+            currentPickable = null;
         }
     }
 }

@@ -15,6 +15,7 @@ public class Door : MonoBehaviour
 
     private float timer;
     private float maxTimer = 1;
+    private bool isDoorLocked = true;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class Door : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (timer >= maxTimer)
+            if (timer >= maxTimer && !isDoorLocked)
             {
                 //Open the door
                 animator.SetBool("b_isDoorOpen", true);
@@ -54,5 +55,15 @@ public class Door : MonoBehaviour
             animator.SetBool("b_isDoorOpen", false);
             meshRenderer.material = startingMaterial;
         }
+    }
+
+    public void LockDoor()
+    {
+        isDoorLocked = true;
+    }
+
+    public void UnlockDoor()
+    {
+        isDoorLocked = false;
     }
 }
