@@ -335,8 +335,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1799474223805199940}
-  - component: {fileID: 88661194395718935}
   - component: {fileID: 2691600981212724589}
+  - component: {fileID: 5128981893589026851}
+  - component: {fileID: 1416835113888561307}
+  - component: {fileID: 7757648816639815396}
+  - component: {fileID: 383234218042324169}
+  - component: {fileID: 4649279455420537783}
+  - component: {fileID: 8622785067559513339}
+  - component: {fileID: 4362678723057259482}
+  - component: {fileID: 6192532482760365788}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -362,32 +369,6 @@ Transform:
   - {fileID: 1522725722426684743}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &88661194395718935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4359269100408460836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b0a61c9722a944fb44abd8ec1b29db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  head: {fileID: 445301471066097188}
-  speed: 5
-  turnSpeed: 300
-  invertRotation: 1
-  jumpVelocity: 10
-  groundCheck: {fileID: 1522725722426684743}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
-  groundCheckDistance: 0.4
-  bulletPrefab: {fileID: 728589894580450965, guid: 2f2582cc9afe36c4c85943f8e956b8f0,
-    type: 3}
-  shootForce: 1000
-  shootPoint: {fileID: 6018830222223648092}
 --- !u!143 &2691600981212724589
 CharacterController:
   m_ObjectHideFlags: 0
@@ -414,6 +395,125 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.65, z: 0.13}
+--- !u!114 &5128981893589026851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1975bdcbd46176a4c8b6c52eedfaf717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 0
+--- !u!114 &1416835113888561307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8a44f02a625514cae76ff6a5ec2d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  playerVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &7757648816639815396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82752767b1b1ce648910b48a1200a382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 0
+--- !u!114 &383234218042324169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec791e87a12e9441aaaaa70f0af371e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 0}
+  turnSpeed: 0
+  invertRotation: 0
+--- !u!114 &4649279455420537783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c957a52c44e9b04d80735274cdac072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpVelocity: 0
+--- !u!114 &8622785067559513339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2187031246718409804a0a43c98bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  rocketPrefab: {fileID: 0}
+  shootPoint: {fileID: 0}
+  shootForce: 1000
+--- !u!114 &4362678723057259482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ee6fe4bdc5ac34d8ab7cc9975003b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &6192532482760365788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96bc06f0164cf4a49bd07288e64e688c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attachPoint: {fileID: 0}
 --- !u!1 &5563605692826093969
 GameObject:
   m_ObjectHideFlags: 0

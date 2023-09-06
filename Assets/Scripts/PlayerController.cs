@@ -52,21 +52,21 @@ public class PlayerController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetInput();
-        MovePlayer();
-        RotatePlayer();
-        GroundCheck();
-        JumpCheck();
-        Shoot();
-        ShootRocket();
-        Interact();
-        PickAndDrop();
+        //GetInput();
+        //MovePlayer();
+        //RotatePlayer();
+        //GroundCheck();
+        //JumpCheck();
+        //Shoot();
+        //ShootRocket();
+        //Interact();
+        //PickAndDrop();
     }
 
     void GetInput()
