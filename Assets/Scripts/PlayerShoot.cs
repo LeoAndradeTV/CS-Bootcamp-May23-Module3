@@ -4,34 +4,39 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] private Rigidbody bulletPrefab;
-    [SerializeField] private Rigidbody rocketPrefab;
+    //[SerializeField] private Rigidbody bulletPrefab;
+    //[SerializeField] private Rigidbody rocketPrefab;
+    [SerializeField] private ObjectPool bulletPool;
+    [SerializeField] private ObjectPool rocketPool;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private float shootForce = 1000f;
-
-    private PlayerInput input;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        input = GetComponent<PlayerInput>();
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (input.BulletWasShot())
+        if (PlayerInput.Instance.BulletWasShot())
         {
-            Rigidbody bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-            bullet.AddForce(shootPoint.forward * shootForce);
-            Destroy(bullet.gameObject, 3f);
+            ShootProjectile(bulletPool);
         }
 
-        if (input.RocketWasShot())
+        if (PlayerInput.Instance.RocketWasShot())
         {
-            Rigidbody rocket = Instantiate(rocketPrefab, shootPoint.position, Quaternion.identity);
-            rocket.AddForce(shootPoint.forward * shootForce);
-            Destroy(rocket.gameObject, 3f);
+            ShootProjectile(rocketPool);
         }
+    }
+
+    private void ShootProjectile(ObjectPool pool)
+    {
+        PooledObject projectile = pool.GetPooledObject();
+        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+
+        // Reset the position of the reused bullet
+        projectile.transform.position = shootPoint.position;
+
+        projectileRb.velocity = Vector3.zero;
+
+        projectile.gameObject.SetActive(true);
+        projectileRb.AddForce(shootPoint.forward * shootForce);
+        projectile.DestroyPooledObjectWithTime(3f);
     }
 }

@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
-    protected PlayerInput input;
     private Ray ray;
     protected RaycastHit hit;
     protected bool isHitting;
 
     [SerializeField] private LayerMask interactableLayer;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        input = GetComponent <PlayerInput>();
-    }
 
     // Update is called once per frame
     public virtual void Update()

@@ -15,7 +15,7 @@ public class PickInteractor : Interactor
         {
             IPickable pickable = hit.collider.GetComponent<IPickable>();
 
-            if (pickable != null && input.HasInteracted())
+            if (pickable != null && PlayerInput.Instance.HasInteracted())
             {
                 currentPickable = pickable;
                 pickable.OnPicked(attachPoint);
@@ -23,7 +23,7 @@ public class PickInteractor : Interactor
             }
         }
 
-        if (currentPickable != null && input.HasInteracted())
+        if (currentPickable != null && PlayerInput.Instance.HasInteracted())
         {
             currentPickable.OnDropped();
             currentPickable = null;

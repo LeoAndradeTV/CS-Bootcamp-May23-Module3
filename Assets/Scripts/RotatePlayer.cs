@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class RotatePlayer : MonoBehaviour
 {
-    private PlayerInput input;
-
     [SerializeField] private float turnSpeed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        input = GetComponent<PlayerInput>();
-    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * input.GetPlayerRotation().x * Time.deltaTime * turnSpeed);
+        transform.Rotate(Vector3.up * PlayerInput.Instance.GetPlayerRotation().x * Time.deltaTime * turnSpeed);
     }
 }

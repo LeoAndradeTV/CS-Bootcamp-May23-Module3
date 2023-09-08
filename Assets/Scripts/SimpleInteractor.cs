@@ -19,7 +19,7 @@ public class SimpleInteractor : Interactor
                 currentSelectable = selectable;
                 selectable.OnHoverEnter();
 
-                if (input.HasInteracted())
+                if (PlayerInput.Instance.HasInteracted())
                 {
                     selectable.OnSelect();
                 }
