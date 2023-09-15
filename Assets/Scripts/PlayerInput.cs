@@ -21,6 +21,22 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        Actions.OnPlayerDied += CancelInput;
+    }
+
+    private void OnDisable()
+    {
+        Actions.OnPlayerDied -= CancelInput;
+
+    }
+
+    private void CancelInput()
+    {
+        Time.timeScale = 0;
+    }
+
     public Vector2 GetMovementInput()
     {
         return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -46,14 +62,19 @@ public class PlayerInput : MonoBehaviour
         return Input.GetButtonDown("Jump");
     }
 
-    public bool BulletWasShot()
+    public bool ShootWasPressed()
     {
         return Input.GetButtonDown("Fire1");
     }
 
-    public bool RocketWasShot()
+    public bool Weapon1Pressed()
     {
-        return Input.GetButtonDown("Fire2");
+        return Input.GetKeyDown(KeyCode.Alpha1);
+    }
+
+    public bool Weapon2Pressed()
+    {
+        return Input.GetKeyDown(KeyCode.Alpha2);
     }
 
     public bool HasInteracted()

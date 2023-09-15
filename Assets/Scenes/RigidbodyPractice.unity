@@ -4075,6 +4075,24 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1623823364}
   m_SourcePrefab: {fileID: 100100000, guid: 7cf146a280d00724499f23a3f7686de9, type: 3}
+--- !u!1 &870401970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4359269100408460836, guid: acb2120212124da49a4f7e632af74e01,
+    type: 3}
+  m_PrefabInstance: {fileID: 985311199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &870401980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870401970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5654dac3600c14c84b41180bc40541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &898453695
 GameObject:
   m_ObjectHideFlags: 0
@@ -4419,11 +4437,36 @@ PrefabInstance:
       propertyPath: rocketPool
       value: 
       objectReference: {fileID: 1175462783}
+    - target: {fileID: 8622785067559513339, guid: acb2120212124da49a4f7e632af74e01,
+        type: 3}
+      propertyPath: bulletMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ed839be158831342ab20197fe414255, type: 2}
+    - target: {fileID: 8622785067559513339, guid: acb2120212124da49a4f7e632af74e01,
+        type: 3}
+      propertyPath: rocketMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 5822b7b95424493418007950b6c6091b, type: 2}
+    - target: {fileID: 8622785067559513339, guid: acb2120212124da49a4f7e632af74e01,
+        type: 3}
+      propertyPath: gunMeshRenderer
+      value: 
+      objectReference: {fileID: 985311200}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4359269100408460836, guid: acb2120212124da49a4f7e632af74e01,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 870401980}
   m_SourcePrefab: {fileID: 100100000, guid: acb2120212124da49a4f7e632af74e01, type: 3}
+--- !u!23 &985311200 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1859400390960812997, guid: acb2120212124da49a4f7e632af74e01,
+    type: 3}
+  m_PrefabInstance: {fileID: 985311199}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &987359228
 GameObject:
   m_ObjectHideFlags: 0

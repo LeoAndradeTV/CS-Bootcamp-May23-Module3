@@ -16,6 +16,8 @@ public class EnemyAttackState : EnemyState
 
     public override void OnStateUpdate(EnemyStateManager manager)
     {
+        Actions.OnPlayerAttacked?.Invoke();
+
         // Exit condition to go back to follow
         if (Vector3.Distance(manager.transform.position, manager.playerTransform.position) > 2f)
         {
