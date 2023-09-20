@@ -343,6 +343,8 @@ GameObject:
   - component: {fileID: 8622785067559513339}
   - component: {fileID: 4362678723057259482}
   - component: {fileID: 6192532482760365788}
+  - component: {fileID: 4350537363168777317}
+  - component: {fileID: 2799807079705481383}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -462,10 +464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2187031246718409804a0a43c98bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4709220722084311207, guid: 2f2582cc9afe36c4c85943f8e956b8f0,
-    type: 3}
-  rocketPrefab: {fileID: 4709220722084311207, guid: f5c7f2fa2c77bbb479a6005662f2ae5d,
-    type: 3}
+  gunMeshRenderer: {fileID: 1859400390960812997}
+  bulletMaterial: {fileID: 2100000, guid: 0ed839be158831342ab20197fe414255, type: 2}
+  rocketMaterial: {fileID: 2100000, guid: 5822b7b95424493418007950b6c6091b, type: 2}
+  bulletPool: {fileID: 0}
+  rocketPool: {fileID: 0}
   shootPoint: {fileID: 6018830222223648092}
   shootForce: 1000
 --- !u!114 &4362678723057259482
@@ -483,6 +486,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 1024
+  maxInteractionDistance: 2
 --- !u!114 &6192532482760365788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +502,37 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 2048
+  maxInteractionDistance: 2
   attachPoint: {fileID: 6200364527368983303}
+--- !u!114 &4350537363168777317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5654dac3600c14c84b41180bc40541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2799807079705481383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359269100408460836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd3a4bc8f9a27c448c6a3212cae47dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  maxInteractionDistance: 10
+  agent: {fileID: 0}
 --- !u!1 &5563605692826093969
 GameObject:
   m_ObjectHideFlags: 0

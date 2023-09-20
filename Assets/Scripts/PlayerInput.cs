@@ -81,4 +81,9 @@ public class PlayerInput : MonoBehaviour
     {
         return Input.GetKeyDown(KeyCode.E);
     }
+
+    public bool HasCommanded()
+    {
+        return Input.GetKeyDown(KeyCode.F);
+    }
 }
