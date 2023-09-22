@@ -16,12 +16,26 @@ public class Door : MonoBehaviour
     private float timer;
     private float maxTimer = 1;
     private bool isDoorLocked = true;
+    private bool hasKey;
 
     // Start is called before the first frame update
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        startingMaterial = meshRenderer.material;
+        //startingMaterial = meshRenderer.material;
+
+        
+    }
+
+    private void OnEnable()
+    {
+        Actions.OnKeyPickedUp += KeyWasPickedUp;
+    }
+
+    private void OnDisable()
+    {
+        Actions.OnKeyPickedUp -= KeyWasPickedUp;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +43,7 @@ public class Door : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             timer = 0;
-            meshRenderer.material = playerCloseToDoor;
+            //meshRenderer.material = playerCloseToDoor;
         }
     }
 
@@ -42,7 +56,7 @@ public class Door : MonoBehaviour
             if (timer >= maxTimer && !isDoorLocked)
             {
                 //Open the door
-                animator.SetBool("b_isDoorOpen", true);
+                animator.SetBool("Door", true);
             }
         }
     }
@@ -52,18 +66,31 @@ public class Door : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             timer = 0;
-            animator.SetBool("b_isDoorOpen", false);
-            meshRenderer.material = startingMaterial;
+            animator.SetBool("Door", false);
+            //meshRenderer.material = startingMaterial;
         }
     }
 
     public void LockDoor()
     {
         isDoorLocked = true;
+        animator.SetBool("Door", false);
     }
 
     public void UnlockDoor()
     {
-        isDoorLocked = false;
+
+        if (hasKey)
+        {
+            isDoorLocked = false;
+            animator.SetBool("Door", true);
+            Debug.Log("Door Unlocked!");
+
+        }
+    }
+
+    private void KeyWasPickedUp()
+    {
+        hasKey = true;
     }
 }

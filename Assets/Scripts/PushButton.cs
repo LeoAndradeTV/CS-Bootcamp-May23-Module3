@@ -17,17 +17,19 @@ public class PushButton : MonoBehaviour, ISelectable
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        onExitHoverMaterial = meshRenderer.material;
+        //onExitHoverMaterial = meshRenderer.material;
     }
 
     public void OnHoverEnter()
     {
-        meshRenderer.material = onHoverMaterial;
+        //meshRenderer.material = onHoverMaterial;
+        Debug.Log("Hovering");
     }
 
     public void OnHoverExit()
     {
-        meshRenderer.material = onExitHoverMaterial;
+        //meshRenderer.material = onExitHoverMaterial;
+        Debug.Log("Not hovering");
     }
 
     public void OnSelect()
