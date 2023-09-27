@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] private LevelManager[] levelManagers;
+
     private State currentState;
+    private LevelManager currentLevel;
+    private int currentLevelIndex;
 
     private void Awake()
     {
@@ -20,12 +24,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChangeState(State.Briefing);
+        if (levelManagers.Length > 0)
+        {
+            ChangeState(State.Briefing, levelManagers[currentLevelIndex]);
+        }
     }
 
-    public void ChangeState(State newState)
+    public void ChangeState(State newState, LevelManager level)
     {
         currentState = newState;
+        currentLevel = level;
 
         switch (currentState)
         {
@@ -53,11 +61,15 @@ public class GameManager : MonoBehaviour
     private void StartBriefing()
     {
         Debug.Log("Started Briefing");
+        ChangeState(State.LevelEntrance, currentLevel);
     }
 
     private void InitiateLevel()
     {
         Debug.Log("Level Start");
+
+        currentLevel.LevelStart();
+        ChangeState(State.Level, currentLevel);
     }
 
     private void RunLevel()
@@ -68,6 +80,8 @@ public class GameManager : MonoBehaviour
     private void CompleteLevel()
     {
         Debug.Log("Level end");
+
+        ChangeState(State.LevelEntrance, levelManagers[++currentLevelIndex]);
     }
 
     private void GameOver()
